@@ -1,0 +1,12 @@
+{
+  "name": "mongo-restore-safe",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "globby": "^6.1.0"
+  }
+}

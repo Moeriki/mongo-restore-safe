@@ -5,6 +5,9 @@
   "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
   "license": "MIT",
   "main": "index.js",
+  "bin": {
+    "mongo-restore-safe": "index.js"
+  },
   "scripts": {},
   "dependencies": {
     "globby": "^6.1.0"

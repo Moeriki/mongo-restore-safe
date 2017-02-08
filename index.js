@@ -10,7 +10,7 @@ const globby = require('globby');
 
 const EXT = '.bson';
 
-const collection = process.argv[2];
+const database = process.argv[2];
 const dirs = process.argv.slice(3);
 
 const globs = dirs.map((dir) => {
@@ -25,7 +25,10 @@ const globs = dirs.map((dir) => {
 
 const files = globby.sync(globs);
 
+console.log(`import ${files.length} file(s) [${files.join(', ')}] into ${database}`)
+
 files.forEach((file) => {
+  console.log(`fixing ${file}`)
   const metadataFile = path.join(path.dirname(file), path.basename(file, EXT) + '.metadata.json');
   const metadata = JSON.parse(fs.readFileSync(metadataFile));
   metadata.indexes.forEach((index) => {
@@ -34,5 +37,7 @@ files.forEach((file) => {
     }
   });
   fs.writeFileSync(metadataFile, JSON.stringify(metadata), { encoding: 'utf8' });
-  execSync(`mongorestore --drop -d ${collection} ${file}`);
+  console.log(`importing ${file} [mongorestore --drop -d ${database} ${file}]`);
+  execSync(`mongorestore --drop -d ${database} ${file}`);
+  console.log(`imported ${file}`)
 });

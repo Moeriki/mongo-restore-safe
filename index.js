@@ -13,6 +13,11 @@ const EXT = '.bson';
 const database = process.argv[2];
 const dirs = process.argv.slice(3);
 
+if (!database || dirs.length === 0) {
+  process.stdout.write(`Usage:\n\n  ${path.basename(process.argv[1])} database [...file|dir]\n`);
+  process.exit(0);
+}
+
 const globs = dirs.map((dir) => {
   const stat = fs.statSync(dir);
   if (stat.isFile()) {

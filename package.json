@@ -1,15 +1,23 @@
 {
   "name": "mongo-restore-safe",
   "version": "1.0.0",
-  "description": "",
+  "description": "Safe restore mongodb dumps.",
   "author": "Dieter Luypaert <dieterluypaert@gmail.com>",
   "license": "MIT",
   "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
   "bin": {
     "mongo-restore-safe": "index.js"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint *.js"
+  },
   "dependencies": {
     "globby": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1"
   }
 }
